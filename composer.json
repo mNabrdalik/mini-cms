@@ -3,7 +3,7 @@
     "description": "A simple OOP CMS for learning purposes",
     "autoload": {
         "psr-4": {
-            "Mnabrdalik\\MiniCms\\": "src/"
+            "MiniCMS\\": "src/"
         }
     },
     "authors": [
@@ -11,5 +11,7 @@
             "name": "Michał Nabrdalik"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
 }
