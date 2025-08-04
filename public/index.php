@@ -12,6 +12,7 @@
 
 
     use MiniCMS\Database\Database;
+    use MiniCMS\Routing\Router;
 
     // create singleton instance
     $db = MiniCMS\Database\Database::getInstance($servername, $dbname, $username, $password);
@@ -24,4 +25,16 @@
     // $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // var_dump($results);
+
+    $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); //URL typed by user.
+    $router = new Router($path);
+    
+
+    $router->get("/", function() {
+        require __DIR__ . '/views/home.php';
+    });
+
+    $router->dispatch();
+
+
 ?>
