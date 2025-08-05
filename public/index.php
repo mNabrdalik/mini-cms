@@ -29,9 +29,22 @@
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); //URL typed by user.
     $router = new Router($path);
     
-
     $router->get("/", function() {
         require __DIR__ . '/views/home.php';
+    });
+
+    $router->group('/admin', function($router) {
+        $router->get('/dashboard', function() {
+            echo "Admin panel";
+        });
+
+        $router->get('/users', function() {
+            echo "Lista użytkowników";
+        });
+    });
+
+    $router->get('/posts/{id}', function($id) {
+        echo "Wyświetlam post o ID: $id";
     });
 
     $router->dispatch();
